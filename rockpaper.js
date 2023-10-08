@@ -1,3 +1,7 @@
+const rock = "rock"
+const paper = "paper"
+const scissors = "scissors"
+
 function getComputerChoice() {
     const randomNumberChoice = Math.random();
     if (randomNumberChoice < 0.33) {
@@ -18,12 +22,16 @@ function playRound(playersChoice, getComputerChoice) {
         return "You loose"
     else if (playersChoice == "scissors" && getComputerChoice == "rock")
         return "You loose"
-    else 
+    else
         return "You win!"
 }
 
 const playerSelection = prompt("Rock, paper, scissors. Which one you choose?");
 const playersChoice = playerSelection.toLowerCase();
+if (playersChoice !== paper && playersChoice !== rock && playersChoice !== scissors)
+    alert("Wrong spelling!")
+alert(playRound(playersChoice, getComputerChoice()))
+
 
 
 

@@ -9,6 +9,8 @@ const rockButton = document.querySelector('#rock');
 const paperButton = document.querySelector('#paper');
 const scissorsButton = document.querySelector('#scissors');
 const outcomeDiv = document.querySelector('.outcome');
+const yourpoints = document.querySelector('.yourpoints')
+const comppoints = document.querySelector('.comppoints')
 
 function getComputerChoice() {
     const randomNumberChoice = Math.random();
@@ -95,16 +97,22 @@ function scoreCalculation(stefan) {
 rockButton.addEventListener('click', () => {
     const playersChoice = rock
     playRound(playersChoice)
+    yourpoints.innerText = `Players score:  ${startingUsersPoints}`
+    comppoints.innerText = `Computers score:  ${startingComputerPoints}`
 
 })
 
 paperButton.addEventListener('click', () => {
     const playersChoice = paper
     playRound(playersChoice)
+    yourpoints.innerText = `Players score:  ${startingUsersPoints}`
+    comppoints.innerText = `Computers score:  ${startingComputerPoints}`
 
 })
 scissorsButton.addEventListener('click', () => {
     const playersChoice = scissors
     playRound(playersChoice)
-
+    yourpoints.innerText = `Players score:  ${startingUsersPoints}`
+    comppoints.innerText = `Computers score:  ${startingComputerPoints}`
 })
+

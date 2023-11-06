@@ -62,6 +62,16 @@ function checkResult(x, y) {
 
 function playRound(playersChoice) {
     if (startingComputerPoints >= 3) {
+        return
+    }
+    else if (startingUsersPoints >= 3) {
+        return
+    }
+    const computerChoice = getComputerChoice()
+    const result = checkResult(playersChoice, computerChoice)
+    scoreCalculation(result)
+    console.log(result, computerChoice, playersChoice)
+    if (startingComputerPoints >= 3) {
         const h1 = document.createElement('h1')
         h1.innerText = "It's your final defeat! Computer got 3 ponts."
         outcomeDiv.appendChild(h1)
@@ -73,10 +83,6 @@ function playRound(playersChoice) {
         outcomeDiv.appendChild(h1)
         return
     }
-    const computerChoice = getComputerChoice()
-    const result = checkResult(playersChoice, computerChoice)
-    scoreCalculation(result)
-    console.log(result, computerChoice, playersChoice)
     return result
 }
 
@@ -90,6 +96,10 @@ function scoreCalculation(stefan) {
     }
     else if (stefan === 1) {
         startingUsersPoints = startingUsersPoints + 1
+    }
+    else if (stefan === 0){
+        startingUsersPoints = startingUsersPoints + 1
+        startingComputerPoints = startingComputerPoints + 1
     }
 }
 

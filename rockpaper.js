@@ -25,41 +25,62 @@ function getComputerChoice() {
 
 function checkResult(x, y) {
     if (x === rock && y === paper) {
-        alert(looseMessage)
+        const p = document.createElement('p')
+        p.innerText = 'You loose! Computer picked paper'
+        outcomeDiv.appendChild(p)
         return -1
     }
     else if (x === paper && y === scissors) {
-        alert(looseMessage)
+        const p = document.createElement('p')
+        p.innerText = 'You loose! Computer picked scissors'
+        outcomeDiv.appendChild(p)
         return -1
     }
     else if (x === scissors && y === rock) {
-        alert(looseMessage)
+        const p = document.createElement('p')
+        p.innerText = 'You loose! Computer picked rock'
+        outcomeDiv.appendChild(p)
+        // alert(looseMessage)
         return -1
     }
 
     else if (x === y) {
-        alert(drawMessage)
+        const p = document.createElement('p')
+        p.innerText = 'It is a draw!'
+        outcomeDiv.appendChild(p)
         return 0
     }
-    else
-        alert(winMessage)
-    return 1
+    else {
+        const p = document.createElement('p')
+        p.innerText = 'You win!'
+        outcomeDiv.appendChild(p)
+        return 1
+    }
 }
 
-function playRound() {
-    const playerSelection = prompt("Rock, paper, scissors. Which one you choose?");
-    const playersChoice = playerSelection.toLowerCase();
-    if (playersChoice !== paper && playersChoice !== rock && playersChoice !== scissors)
-        alert("Wrong spelling!")
+function playRound(playersChoice) {
+    if (startingComputerPoints >= 3) {
+        const h1 = document.createElement('h1')
+        h1.innerText = "It's your final defeat! Computer got 3 ponts."
+        outcomeDiv.appendChild(h1)
+        return
+    }
+    else if (startingUsersPoints >= 3) {
+        const h1 = document.createElement('h1')
+        h1.innerText = "It's your Victory! You got 3 points."
+        outcomeDiv.appendChild(h1)
+        return
+    }
     const computerChoice = getComputerChoice()
     const result = checkResult(playersChoice, computerChoice)
-    alert("You get" + " " + result + " " + "point. Computer chose" + " " + computerChoice + "!")
-
+    scoreCalculation(result)
+    console.log(result, computerChoice, playersChoice)
     return result
 }
 
 let startingUsersPoints = 0
 let startingComputerPoints = 0
+
 
 function scoreCalculation(stefan) {
     if (stefan === -1) {
@@ -72,21 +93,18 @@ function scoreCalculation(stefan) {
 
 
 rockButton.addEventListener('click', () => {
-    const computerChoice = getComputerChoice()
-    const playersChoice = 'rock'
-    playRound(playersChoice, computerChoice)
+    const playersChoice = rock
+    playRound(playersChoice)
 
 })
 
 paperButton.addEventListener('click', () => {
-    const computerChoice = getComputerChoice()
-    const playersChoice = 'paper'
-    playRound(playersChoice, computerChoice)
+    const playersChoice = paper
+    playRound(playersChoice)
 
 })
 scissorsButton.addEventListener('click', () => {
-    const computerChoice = getComputerChoice()
-    const playersChoice = 'scissors'
-    playRound(playersChoice, computerChoice)
+    const playersChoice = scissors
+    playRound(playersChoice)
 
 })
